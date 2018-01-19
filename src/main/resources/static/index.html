@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Spring Demo Ajax - Test Case</h1>
+<ul>
+    <li>Spring boot 1.5.2</li>
+    <li>Spring 4.3.6</li>
+    <li>com.fasterxml.jackson 2.8.6</li>
+</ul>
+
+
+<p><button onclick="ajaxList();">ajaxList[GET]</button></p>
+<p><button onclick="ajaxListModel();">ajaxListModel[GET, @ModelAttribute]</button></p>
+<p><button onclick="ajaxListNobody();">ajaxListNobody[GET, Not @ResponseBody]</button> <small>@ResponseBody가 없으므로 뷰 리졸버를 찾게됨</small></p>
+<p><button onclick="ajaxMap();">ajaxMap[PUT, @RequestBody를 지정할 경우]</button></p>
+<p><button onclick="ajaxMap_Get();">ajaxMap_Get[GET, @RequestBody를 지정할 경우]</button> <small>GET은 요청 바디에 데이터가 존재하지 않음</small></p>
+<p><button onclick="ajaxEntity();">ajaxEntity[POST, ResponseEntity]</button></p>
+<p><button onclick="ajaxEntityNobody();">ajaxEntityNobody[POST, ResponseEntity]</button></p>
+<p><button onclick="ajaxEntityNobodyParam();">ajaxEntityNobodyParam[POST, ResponseEntity+Param]</button></p>
+<p><button onclick="callAjax()">View Movie</button> </p>
+
+<p></p>
+
+<div>
+    <h3>Response-</h3>
+    <div id="response-panel"></div>
+</div>
+<
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script>
+function callAjax() {
+    $.ajax({
+        url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20180111",
+        success : function print(result) {
+            responseJson(result)
+        }
+    });
+}
+</script>
+
+</body>
+</html>
